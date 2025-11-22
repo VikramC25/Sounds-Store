@@ -21,8 +21,12 @@ export default defineSchema({
     email: v.string(),
     packId: v.id("packs"),
     amount: v.number(),
-    paypalOrderId: v.string(),
+  
+    razorpayOrderId: v.optional(v.string()),
+    paymentId: v.optional(v.string()),   // <-- REQUIRED FIX
+  
     paid: v.boolean(),
-    createdAt: v.number()
+    createdAt: v.number(),
   }),
+  
 });

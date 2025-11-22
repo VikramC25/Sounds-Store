@@ -12,6 +12,7 @@ import type * as admin from "../admin.js";
 import type * as files from "../files.js";
 import type * as packView from "../packView.js";
 import type * as packs from "../packs.js";
+import type * as payments from "../payments.js";
 
 import type {
   ApiFromModules,
@@ -24,6 +25,7 @@ declare const fullApi: ApiFromModules<{
   files: typeof files;
   packView: typeof packView;
   packs: typeof packs;
+  payments: typeof payments;
 }>;
 
 /**

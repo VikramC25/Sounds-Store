@@ -29,12 +29,18 @@ export const createPack = mutation({
     fullPackFileId: v.id("_storage"),
     tags: v.array(v.string()),
     createdAt: v.number(),
+    
+    // 1. ADD THIS ARGUMENT
+    adminSecret: v.string(),
   },
   handler: async (ctx, args) => {
-    const id = await ctx.db.insert("packs", args);
-    const pack = await ctx.db.get(id);
+    // 2. CHECK THE KEY (This runs on the server, safe from hackers)
+    if (args.adminSecret !== process.env.ADMIN_SECRET) {
+      throw new Error("⛔ ACCESS DENIED: Incorrect Admin Password");
+    }
 
-    return { slug: pack.slug };   // <-- RETURN THE SLUG
+    // 3. REMOVE SECRET FROM DATA BEFORE SAVING
+    const { adminSecret, ...packData } = args;
+    return await ctx.db.insert("packs", packData);
   },
 });
-
