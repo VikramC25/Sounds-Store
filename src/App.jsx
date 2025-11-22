@@ -2,7 +2,7 @@
   import Home from "./pages/Home";
   import PackPage from "./pages/PackPage";
   import Admin from "./pages/Admin";
-  import ThankYou from "./pages/ThankYou";
+  import ThankYou from "./pages/Thankyou";
   import CartDrawer from "./components/CartDrawer";
   import Privacy from "./pages/Privacy";
   import Terms from "./pages/Terms";
